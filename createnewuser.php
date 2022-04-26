@@ -7,8 +7,9 @@ if(isset($_SESSION['LoggedInUser'])){
 // set the default timezone to use.
 date_default_timezone_set('UTC');
 $error = '';
+$user_created = false;
     if(!empty($_POST)){
-        print_r($_POST);
+        //print_r($_POST);
         $fullname = $_POST["fullname"];
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -39,7 +40,29 @@ $error = '';
                 $img = "letter-".$img.".png"; //creating image name
                 //echo $img;
                 $today = date("Y-m-d H:i:s"); 
-                echo $today;
+                
+                $stm = $dbh->prepare('INSERT INTO user
+                                        (full_name, email, password, profile_pic, register_on)
+                                        VALUES(:full_name, :email, :password, :profile_pic, :register_on)'
+                                    );
+                
+                $stm->execute(
+                    array(
+                        ":full_name"=>"$fullname",
+                        ":email"=>"$email",
+                        ":password"=>"$password",
+                        ":profile_pic"=>"$img",
+                        ":register_on"=>date("Y.m.d H:i:s")
+                    )
+                );
+                $id = $dbh->lastInsertId();
+
+                if($id){
+                    // echo"user created";
+                    $user_created = true;
+                }else{
+                    $error = "Something went wrong";
+                }
 
             }
 
@@ -69,12 +92,15 @@ $error = '';
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-md-4 mt-5 p-3 mybox-shadow">
-                <h5 class="text-center mb-3 font_weight300">Create new account</h5>
+                <h5 class="text-center mb-3 font_weight300">
+                    <?php echo $user_created==true ? "NEW USER CREATED" : "Create new account" ?>
+                </h5>
                 <?php if($error != ''){?>
                     <div class="alert alert-danger" role="alert">
                        <?php echo $error; ?>
                     </div>
                 <?php }?>
+                <?php if($user_created == false){ ?>
                 <form action="createnewuser.php" method="POST">
                     <div class="mb-3">
                         <label for="Fullname" class="form-label">Full Name</label>
@@ -93,6 +119,13 @@ $error = '';
                     </div>
                 </form>
                 <p>Already a user?, <a href="login.php">Login in now</a></p>
+                <?php }else{ ?>
+                    <form action="login.php">
+                        <div class="mb-3 d-grid">
+                            <button type="submit" class="btn btn-primary btn-block">LONGIN NOW</button>
+                        </div>
+                    </form>
+                <?php } ?>
             </div>
         </div>
     </div>

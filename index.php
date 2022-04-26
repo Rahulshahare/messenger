@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['LoggedInUser'])){
+        header('Location: login.php');
+        exit;
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,7 +19,6 @@
     <title>Messenger</title>
   </head>
   <body>
-    <!-- As a heading -->
    
     <nav class="navbar navbar-dark bg-primary">
         <div class="container">

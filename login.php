@@ -12,7 +12,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/messenger.css" rel="stylesheet">
+    <link href="css/messenger.css?v=0.01" rel="stylesheet">
 
     <title>Messenger</title>
   </head>
@@ -26,10 +26,10 @@
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-md-4 mt-5 p-3 mybox-shadow">
-                <h3 class="text-center mb-3">Login</h3>
+                <h5 class="text-center mb-3 font_weight300">Login</h5>
                 <form action="login.php" method="POST">
                     <div class="mb-3">
-                        <label for="Email" class="form-label">Email address</label>
+                        <label for="Email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="Email" name="email" required>
                     </div>
                     <div class="mb-3">

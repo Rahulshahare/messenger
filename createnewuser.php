@@ -3,15 +3,16 @@ $error = '';
     if(!empty($_POST)){
         print_r($_POST);
         $fullname = $_POST["fullname"];
-        $email = $_POST["fullname"];
-        $password = $_POST["fullname"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
         if(empty(trim($fullname)) || empty(trim($email)) || empty(trim($password))){
             $error = "Name, Email or Password are empty.";
         }
 
         if(empty($error) && !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)===false){
-            $error = 'Invalid email, Please enter valid email.';
+            $error = 'Invalid email, Use valid email';
         }
 
         if(empty($error)){
@@ -24,6 +25,9 @@ $error = '';
             if($count > 0){
                 $error = "Email already exist,Try with new email.";
             }else{
+                //Creating new user
+                $password = password_hash($password, PASSWORD_BCRYPT);
+                echo $password;
 
             }
 

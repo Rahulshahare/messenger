@@ -118,7 +118,7 @@ $user_created = false;
                     <button type="submit" class="btn btn-primary btn-block">Create New Account</button>
                     </div>
                 </form>
-                <p>Already a user?, <a href="login.php">Login in now</a></p>
+                <p>Already a user? <a href="login.php">Login in now</a></p>
                 <?php }else{ ?>
                     <form action="login.php">
                         <div class="mb-3 d-grid">

@@ -1,4 +1,9 @@
 <?php
+    session_start();
+    if(isset($_SESSION['LoggedInUser'])){
+        header('Location: index.php');
+        exit;
+    } //Redirect any LoggedIn user to home
     if(!empty($_POST)){
         print_r($_POST);
     }

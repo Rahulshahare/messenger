@@ -1,4 +1,11 @@
 <?php
+session_start();
+if(isset($_SESSION['LoggedInUser'])){
+    header('Location: index.php');
+    exit;
+}
+// set the default timezone to use.
+date_default_timezone_set('UTC');
 $error = '';
     if(!empty($_POST)){
         print_r($_POST);
@@ -16,7 +23,7 @@ $error = '';
         }
 
         if(empty($error)){
-            //email is unique in system
+            //email is unique in system, check wheather email is already exist
             include_once"database/db.php";
             $stm = $dbh->prepare('SELECT * FROM user WHERE email = :email');
             $stm->bindValue(':email',$email);
@@ -27,7 +34,12 @@ $error = '';
             }else{
                 //Creating new user
                 $password = password_hash($password, PASSWORD_BCRYPT);
-                echo $password;
+                //echo $password;
+                $img = substr($fullname, 0,1); //getting first latter of full name
+                $img = "letter-".$img.".png"; //creating image name
+                //echo $img;
+                $today = date("Y-m-d H:i:s"); 
+                echo $today;
 
             }
 

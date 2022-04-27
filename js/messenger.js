@@ -44,7 +44,9 @@ $( document ).ready(function() {
         });
     }
         
-    
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
     function showUsers(){
         if(userList){
             console.log(userList);
@@ -52,11 +54,14 @@ $( document ).ready(function() {
             
             const myObj = JSON.parse(userList);
             x = myObj.id;
-            Object.entries(myObj).forEach(([key, value]) => {
-                console.log(key , value); // key ,value
-              });
-              
-            console.log(myObj[0]["id"]);
+            // Object.entries(myObj).forEach(([key, value]) => {
+            //     console.log(key , value); // key ,value
+            //   });
+              for (let index = 0; index < myObj.length; index++) {
+                console.log("id ="+myObj[index].id+" name = "+capitalizeFirstLetter(myObj[index].full_name));
+                  
+              }
+            console.log(myObj[0].id);
 
             
              

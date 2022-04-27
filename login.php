@@ -52,7 +52,7 @@
                         $_SESSION['UserId'] = $row['id'];
                         $_SESSION['profile_pic'] = $row['profile_pic'];
                         $_SESSION['loggedin_time'] = time();
-                        $_COOKIE['userId'] = $row['id'];
+                        setcookie('userId', $row['id'], time() + (86400 * 30), "/");
                         header("Location: index.php");
                         exit;
             }else{

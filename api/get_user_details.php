@@ -6,7 +6,7 @@ if(!empty($_GET['userId'])){
     $stm = $dbh->prepare("SELECT * FROM `user` WHERE id != :id ORDER BY full_name ASC");
     $stm->bindValue(":id", $userId);
     $stm->execute();
-    $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+    $row = $stm->fetchAll(PDO::FETCH_OBJ);
     if($row){
         print_r( json_encode($row));
     }

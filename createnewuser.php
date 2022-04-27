@@ -80,7 +80,7 @@ $user_created = false;
     </nav>
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col-md-3 mt-5 p-3 mybox-shadow">
+            <div class="col-md-4 mt-5 p10_35 mybox-shadow">
                 <h5 class="text-center mb-3 font_weight300">
                     <?php echo $user_created==true ? "NEW ACCOUNT CREATED" : "Create new account" ?>
                 </h5>

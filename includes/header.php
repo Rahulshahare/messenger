@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/messenger.css?v=0.0.5" rel="stylesheet">
+    <link href="css/messenger.css?v=0.0.9" rel="stylesheet">
 
     <title>Messenger</title>
   </head>

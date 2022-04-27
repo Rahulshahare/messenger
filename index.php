@@ -35,8 +35,7 @@
                         </div>
                         <div class="card-body" style="max-height: 500px;overflow: auto;">
                             <div id="UserList" class="list-group">
-                                <?php for ($i=0; $i < 15 ; $i++) { ?>
-                                    <a href="#" class="list-group-item list-group-item-action">
+                                    <!-- <a href="#" class="list-group-item list-group-item-action">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-3 position-relative" style="padding: 0;text-align: center;"> 
@@ -53,8 +52,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
-                                   <?php } ?>
+                                    </a> -->
                                 </div>
                         </div>
                     </div>
@@ -67,15 +65,10 @@
                         <div class="h500">
                         <div class="card-body" style="max-height: 432px;overflow: auto;">
                             
-                                <div class="list-group">
+                                <ul class="list-group">
                                 <?php for ($i=0; $i < 10 ; $i++) { ?>
-                                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                                        The current link item
-                                    </a>
-                                    <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-                                    <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-                                    <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-                                    <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+                                   
+                                    <li class="list-group-item msgbox">A second link item</li>
                                     <?php } ?>
                                 </div>
                             

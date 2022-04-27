@@ -26,6 +26,10 @@ $( document ).ready(function() {
         getUserDetails(userId);
     }
 
+    function OnUserClick(id){
+        console.log(id);
+    }
+
     /**
      * function to get user details
      */
@@ -59,6 +63,7 @@ $( document ).ready(function() {
             //   });
             var renderUserList;
               for (let index = 0; index < myObj.length; index++) {
+                    var id = myObj[index].id;
                     var full_name = capitalizeFirstLetter(myObj[index].full_name);
                     var profile_pic = myObj[index].profile_pic;
                     var online = myObj[index].online;
@@ -67,7 +72,7 @@ $( document ).ready(function() {
                     var badge = online == 1 ? 'success' :'secondary';
                     var secText = online == 1 ? 'Active now' : last_login == '' ? register_on : last_login ;
                     var UI_user_list = document.getElementById("UserList");
-                    UI_user_list.innerHTML += '<a href="#" class="list-group-item list-group-item-action">'+
+                    UI_user_list.innerHTML += '<a href="#" id="'+id+'" data-id="'+id+'"  class="UserInList list-group-item list-group-item-action">'+
                                                 '<div class="container">'+
                                                 '<div class="row">'+
                                                 '<div class="col-3 position-relative" style="padding: 0;text-align: center;">'+
@@ -80,12 +85,13 @@ $( document ).ready(function() {
                                                 '</div>'+
                                                 '<div class="col-9" style="padding: 10px;">'+
                                                 '<p style="margin: 0;">'+full_name+'</p>'+
-                                                '<span class="text-secondary">'+secText+'</span>'+
+                                                '<span class="text-secondary" style="font-size: 14px;">'+secText+'</span>'+
                                                 '</div></div></div></a>';
                                            
                                                
                   
               }
+              GetAnatherUser();
 
             // let UI_user_list = document.getElementById("UserList");
             // UI_user_list.innerHTML = renderUserList; 
@@ -102,4 +108,26 @@ $( document ).ready(function() {
         }
     }
     
+    
+function GetAnatherUser(){
+    $('.UserInList').click(function(){
+        // alert(this.id);
+        if ($( ".UserInList" ).hasClass('active')) {
+            $( ".UserInList" ).removeClass( 'active');
+        } else {
+          $( "#"+this.id ).addClass( 'active');
+        }
+        return false;
+    });
+    // document.getElementById ("UserInList").addEventListener ("click", myFunction, false);
+
+    // function myFunction() {
+    // alert("Hello! I am an alert box!!");
+    // }
+}
+
+    
 }); //End of on Ready
+
+
+

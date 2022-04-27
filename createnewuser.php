@@ -10,10 +10,11 @@ date_default_timezone_set('UTC');
 $error = '';
 $user_created = false;
     if(!empty($_POST)){
-        //print_r($_POST);
+       // print_r($_POST);
         $fullname = $_POST["fullname"];
         $email = $_POST["email"];
         $password = $_POST["password"];
+        $password_hash = base64_encode($password);
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
         if(empty(trim($fullname)) || empty(trim($email)) || empty($password)   ){
@@ -23,7 +24,7 @@ $user_created = false;
         if(empty($error) && !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)===false){
             $error = 'Invalid email, Use valid email';
         }
-
+        //echo $password_hash;
         if(empty($error)){
             //email is unique in system, check wheather email is already exist
             include_once"database/db.php";
@@ -34,10 +35,8 @@ $user_created = false;
             if($count > 0){
                 $error = "Email already exist,Try with new email.";
             }else{
+                
                 //Creating new user
-                //$password = password_hash($password, PASSWORD_BCRYPT); <-//DEPRECATED
-                $password = messenger_hash($password);
-                //echo $password;
                 $img = substr($fullname, 0,1); //getting first latter of full name
                 $img = "letter-".$img.".png"; //creating image name
                 //echo $img;
@@ -52,7 +51,7 @@ $user_created = false;
                     array(
                         ":full_name"=>"$fullname",
                         ":email"=>"$email",
-                        ":password"=>"$password",
+                        ":password"=>"$password_hash",
                         ":profile_pic"=>"$img",
                         ":register_on"=>date("Y.m.d H:i:s")
                     )

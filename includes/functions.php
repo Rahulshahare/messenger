@@ -3,8 +3,7 @@
  * encryption function
  */
 function messenger_hash($str){
-    $hash = base64_encode($str);
-    return $hash;
+    return base64_encode($str);
 }
 
 /**

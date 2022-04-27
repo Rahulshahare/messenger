@@ -35,3 +35,22 @@ body{
     position: absolute;
     opacity: 0;
 }
+
+.card-body {
+    padding: 0.5rem 0rem;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: unset;
+    border-top-right-radius: unset;
+}
+
+.list-group-item {
+    border: none;
+}
+
+.list-group-item.active {
+    color: inherit;
+    background-color: #f1f1f1;
+    border-color: inherit;
+}

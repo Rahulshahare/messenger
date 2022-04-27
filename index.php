@@ -34,11 +34,28 @@
                             FRIENDS
                         </div>
                         <div class="card-body" style="max-height: 500px;overflow: auto;">
-                        <?php for ($i=0; $i < 15 ; $i++) { ?>
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            <?php } ?>
+                            <div id="UserList" class="list-group">
+                                <?php for ($i=0; $i < 15 ; $i++) { ?>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-3 position-relative" style="padding: 0;text-align: center;"> 
+                                                    <div class="">
+                                                        <img src="usericons/letter-t.png" class="img-fluid " style="width: 80%;"/>
+                                                        <span class="position-absolute bottom-0  translate-middle p-2 bg-success border border-light rounded-circle" style="border: 3px solid #fff !important;">
+                                                            <span class="visually-hidden">New alerts</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-9" style="padding: 10px;">
+                                                        <p style="margin: 0;">Wizkumar</p>
+                                                        <span class="text-secondary">Active now</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                   <?php } ?>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -49,11 +66,19 @@
                         </div>
                         <div class="h500">
                         <div class="card-body" style="max-height: 432px;overflow: auto;">
-                            <?php for ($i=0; $i < 15 ; $i++) { ?>
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            <?php } ?>
+                            
+                                <div class="list-group">
+                                <?php for ($i=0; $i < 10 ; $i++) { ?>
+                                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                        The current link item
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+                                    <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+                                    <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+                                    <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+                                    <?php } ?>
+                                </div>
+                            
                         </div>
                         <div class="card-footer" style="height: 68px;border-top: none;background: none;">
                             <div class="msg-form" style="width: 100%;height: 100%;border-radius: 50px;border: 1px solid rgb(219 219 219);padding: 10px;">

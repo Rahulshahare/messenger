@@ -52,7 +52,7 @@ $user_created = false;
                     array(
                         ":full_name"=>"$fullname",
                         ":email"=>"$email",
-                        ":password"=>'$password',
+                        ":password"=>"$password",
                         ":profile_pic"=>"$img",
                         ":register_on"=>date("Y.m.d H:i:s")
                     )

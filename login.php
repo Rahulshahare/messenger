@@ -70,7 +70,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/messenger.css?v=0.01" rel="stylesheet">
+    <link href="css/messenger.css?v=0.0.3" rel="stylesheet">
 
     <title>Messenger</title>
   </head>
@@ -83,7 +83,7 @@
     </nav>
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col-md-4 mt-5 p-3 mybox-shadow">
+            <div class="col-md-3 mt-5 p-3 mybox-shadow">
                 <h5 class="text-center mb-3 font_weight300">Sign In</h5>
                 <?php if($error != ''){?>
                     <div class="alert alert-danger" role="alert">
@@ -92,12 +92,10 @@
                 <?php }?>
                 <form action="login.php" method="POST">
                     <div class="mb-3">
-                        <label for="Email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="Email" name="email" required>
+                        <input type="email" class="form-control" id="Email" name="email" required placeholder="Email">
                     </div>
                     <div class="mb-3">
-                        <label for="Password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="Password" required name="password">
+                        <input type="password" class="form-control" id="Password" required name="password" placeholder="Password">
                     </div>
                     <div class="mb-3 d-grid">
                     <button type="submit" class="btn btn-primary btn-block">Sign In</button>

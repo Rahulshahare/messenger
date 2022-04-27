@@ -80,7 +80,7 @@ $user_created = false;
 
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/messenger.css?v=0.01" rel="stylesheet">
+    <link href="css/messenger.css?v=0.0.3" rel="stylesheet">
 
     <title>Messenger</title>
   </head>
@@ -93,7 +93,7 @@ $user_created = false;
     </nav>
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col-md-4 mt-5 p-3 mybox-shadow">
+            <div class="col-md-3 mt-5 p-3 mybox-shadow">
                 <h5 class="text-center mb-3 font_weight300">
                     <?php echo $user_created==true ? "NEW ACCOUNT CREATED" : "Create new account" ?>
                 </h5>
@@ -105,16 +105,13 @@ $user_created = false;
                 <?php if($user_created == false){ ?>
                 <form action="createnewuser.php" method="POST">
                     <div class="mb-3">
-                        <label for="Fullname" class="form-label">Full Name</label>
-                        <input type="text" class="form-control" id="Fullname" name="fullname" required>
+                        <input type="text" class="form-control" id="Fullname" name="fullname" required placeholder="Full Name">
                     </div>
                     <div class="mb-3">
-                        <label for="Email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="Email" name="email" required>
+                        <input type="email" class="form-control" id="Email" name="email" required placeholder="Email">
                     </div>
                     <div class="mb-3">
-                        <label for="Password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="Password" name="password" required>
+                        <input type="password" class="form-control" id="Password" name="password" required placeholder="Password">
                     </div>
                     <div class="mb-3 d-grid">
                     <button type="submit" class="btn btn-primary btn-block">Create New Account</button>

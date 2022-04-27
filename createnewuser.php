@@ -4,6 +4,7 @@ if(isset($_SESSION['LoggedInUser'])){
     header('Location: index.php');
     exit;
 }
+include_once"includes/functions.php";
 // set the default timezone to use.
 date_default_timezone_set('UTC');
 $error = '';
@@ -15,7 +16,7 @@ $user_created = false;
         $password = $_POST["password"];
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
-        if(empty(trim($fullname)) || empty(trim($email)) || empty(trim($password))){
+        if(empty(trim($fullname)) || empty(trim($email)) || empty($password)   ){
             $error = "Name, Email or Password are empty.";
         }
 
@@ -34,7 +35,8 @@ $user_created = false;
                 $error = "Email already exist,Try with new email.";
             }else{
                 //Creating new user
-                $password = password_hash($password, PASSWORD_BCRYPT);
+                //$password = password_hash($password, PASSWORD_BCRYPT); <-//DEPRECATED
+                $password = messenger_hash($password);
                 //echo $password;
                 $img = substr($fullname, 0,1); //getting first latter of full name
                 $img = "letter-".$img.".png"; //creating image name
@@ -50,7 +52,7 @@ $user_created = false;
                     array(
                         ":full_name"=>"$fullname",
                         ":email"=>"$email",
-                        ":password"=>"$password",
+                        ":password"=>'$password',
                         ":profile_pic"=>"$img",
                         ":register_on"=>date("Y.m.d H:i:s")
                     )

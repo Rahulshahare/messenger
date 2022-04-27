@@ -4,8 +4,55 @@
         header('Location: index.php');
         exit;
     } //Redirect any LoggedIn user to home
+    include_once"includes/functions.php";
+    $error = '';
     if(!empty($_POST)){
         print_r($_POST);
+        
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $password_new = $password;
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+        if( empty(trim($email)) || empty($password)){
+            $error = "Email or Password are empty.";
+        }
+
+        if(empty($error) && !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)===false){
+            $error = 'Invalid email, Use valid email';
+        }
+
+        if(empty($error)){
+            include_once"database/db.php";
+            $stm = $dbh->prepare("SELECT * FROM user WHERE email = :email");
+            $stm->bindValue(":email",$email);
+            $stm->execute();
+            $count = $stm->rowCount();
+            if($count>0){
+                $row = $stm->fetch(PDO::FETCH_ASSOC);
+                //print_r($row);
+            }else{
+                $error = "No user found.";
+            }
+        }
+
+        if(empty($error) && !empty($row) && array_key_exists('id', $row) && (count($row)>0) ){
+            //Procced for login
+             $hash = $row['password'];
+            echo strlen($hash);
+            echo $password_new;
+            //echo $hash;
+
+            $isPasswordVarified = password_verify($password_new, $hash);
+            $isPasswordVarified = messenger_verify($password_new, $hash);
+
+            if($isPasswordVarified){
+                echo"do more";
+            }else{
+                $error = "Invalid password.";
+            }
+        }
+
     }
 ?>
 <!doctype html>
@@ -32,6 +79,11 @@
         <div class="row justify-content-md-center">
             <div class="col-md-4 mt-5 p-3 mybox-shadow">
                 <h5 class="text-center mb-3 font_weight300">Login</h5>
+                <?php if($error != ''){?>
+                    <div class="alert alert-danger" role="alert">
+                       <?php echo $error; ?>
+                    </div>
+                <?php }?>
                 <form action="login.php" method="POST">
                     <div class="mb-3">
                         <label for="Email" class="form-label">Email</label>

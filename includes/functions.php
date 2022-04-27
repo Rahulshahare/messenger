@@ -1,7 +1,22 @@
 <?php
-/*
-File to hold common functions
-*/
+/**
+ * encryption function
+ */
+function messenger_hash($str){
+    $hash = base64_encode($str);
+    return $hash;
+}
 
-
+/**
+ * function to verify encrypted values
+ */
+function messenger_verify($plainText, $hash){
+    $newHash = base64_encode($plainText);
+    $verify = strcasecmp($newHash, $hash);
+    if($verify == 0){
+        return true;
+    }else{
+        return false;
+    }
+}
 ?>

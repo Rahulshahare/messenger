@@ -7,7 +7,7 @@
     include_once"includes/functions.php";
     $error = '';
     if(!empty($_POST)){
-        print_r($_POST);
+        // print_r($_POST);
         
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -30,7 +30,7 @@
             $count = $stm->rowCount();
             if($count>0){
                 $row = $stm->fetch(PDO::FETCH_ASSOC);
-                print_r($row);
+                // print_r($row);
             }else{
                 $error = "No user found.";
             }

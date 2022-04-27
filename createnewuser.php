@@ -71,20 +71,7 @@ $user_created = false;
         }
     }
 ?>
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/messenger.css?v=0.0.3" rel="stylesheet">
-
-    <title>Messenger</title>
-  </head>
-  <body>
+<?php include_once"includes/header.php"; ?>
    
     <nav class="navbar mybox-shadow">
         <div class="container">
@@ -129,9 +116,4 @@ $user_created = false;
         </div>
     </div>
 
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/messenger.js"></script>
-    <?php unset($dbh); ?>
-  </body>
-</html>
+<?php include_once"includes/footer.php"; ?>

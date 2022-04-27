@@ -86,7 +86,7 @@ $user_created = false;
   </head>
   <body>
    
-    <nav class="navbar navbar-dark bg-primary">
+    <nav class="navbar mybox-shadow">
         <div class="container">
             <span class="navbar-brand mb-0 h1">Messenger</span>
         </div>

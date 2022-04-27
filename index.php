@@ -20,7 +20,7 @@
   </head>
   <body>
    
-    <nav class="navbar navbar-dark bg-primary">
+    <nav class="navbar mybox-shadow">
         <div class="container">
             <span class="navbar-brand mb-0 h1">Messenger</span>
             <div class="dropdown text-end" style="margin-left: auto;">
@@ -39,8 +39,8 @@
     </nav>
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col-md-4 mt-3 p-2 mybox-shadow">
-                <h3 class="text-center">Login</h3>
+            <div class="col mt-3 p-2 mybox-shadow">
+                <h3 class="text-center">messenger</h3>
             </div>
         </div>
     </div>

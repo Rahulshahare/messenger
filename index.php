@@ -23,6 +23,18 @@
     <nav class="navbar navbar-dark bg-primary">
         <div class="container">
             <span class="navbar-brand mb-0 h1">Messenger</span>
+            <div class="dropdown text-end" style="margin-left: auto;">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="usericons/<?php echo $_SESSION['profile_pic'] ?>" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
+          </ul>
+        </div>
         </div>
     </nav>
     <div class="container">
@@ -36,5 +48,6 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/messenger.js"></script>
+    <?php unset($dbh); ?>
   </body>
 </html>

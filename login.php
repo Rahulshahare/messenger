@@ -30,7 +30,7 @@
             $count = $stm->rowCount();
             if($count>0){
                 $row = $stm->fetch(PDO::FETCH_ASSOC);
-                //print_r($row);
+                print_r($row);
             }else{
                 $error = "No user found.";
             }
@@ -39,15 +39,21 @@
         if(empty($error) && !empty($row) && array_key_exists('id', $row) && (count($row)>0) ){
             //Procced for login
              $hash = $row['password'];
-            echo strlen($hash);
-            echo $password_new;
+            //echo strlen($hash);
+            //echo $password_new;
             //echo $hash;
 
-            $isPasswordVarified = password_verify($password_new, $hash);
+            //$isPasswordVarified = password_verify($password_new, $hash);<- DEPRECATED
             $isPasswordVarified = messenger_verify($password_new, $hash);
 
             if($isPasswordVarified){
-                echo"do more";
+                //echo"do more";
+                        $_SESSION['LoggedInUser'] = $row['full_name'];
+                        $_SESSION['UserId'] = $row['id'];
+                        $_SESSION['profile_pic'] = $row['profile_pic'];
+                        $_SESSION['loggedin_time'] = time();
+                        header("Location: index.php");
+                        exit;
             }else{
                 $error = "Invalid password.";
             }
@@ -78,7 +84,7 @@
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-md-4 mt-5 p-3 mybox-shadow">
-                <h5 class="text-center mb-3 font_weight300">Login</h5>
+                <h5 class="text-center mb-3 font_weight300">Sign In</h5>
                 <?php if($error != ''){?>
                     <div class="alert alert-danger" role="alert">
                        <?php echo $error; ?>
@@ -94,7 +100,7 @@
                         <input type="password" class="form-control" id="Password" required name="password">
                     </div>
                     <div class="mb-3 d-grid">
-                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                     </div>
                 </form>
                 <p>New to site, <a href="createnewuser.php">Create a account</a></p>
@@ -105,5 +111,6 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/messenger.js"></script>
+    <?php unset($dbh); ?>
   </body>
 </html>

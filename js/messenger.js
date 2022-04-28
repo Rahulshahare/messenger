@@ -306,12 +306,14 @@ function getNewMessages(){
                 data:{conversation_id:conversation_id, last_message_id:last_message_id},
                 success: function(data){ 
                     console.log(data);
+                    if(data != undefined){
                     // userMessages = userMessages + data;
                     var obj = JSON.parse(userMessages);
                     obj.push(data);
                     userMessages = JSON.stringify(obj);
                     
                      showMessages();
+                    }
                    
                 },
                 error: function(){

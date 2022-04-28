@@ -1,10 +1,11 @@
 $( document ).ready(function() {
     console.log( "ready!" );
     let userList = [];
-    var messages = [];
+    var userMessages = [];
     var userId = '';
     var user_two = '';
     var conversation_id = '';
+    var last_message_id = '';
     /**
      * A function to get cookie
      * 
@@ -166,7 +167,19 @@ function GetAnatherUser(){
 
 function GetMessages(){
     if(conversation_id){
-        //working on
+        $.ajax({
+            type:"POST",
+            url: "api/get_messages.php",
+            data:{conversation_id:conversation_id},
+            success: function(data){ 
+                console.log(data);
+                userMessages = data;
+                showMessages();
+            },
+            error: function(){
+                alert("There was an error.");
+            }
+        });
     }else{
         console.log("ERROR WHILE GETTING INITIAL MESSAGES");
     }
@@ -228,6 +241,81 @@ function ShowProfileOfUser(){
             UserProfileName.innerHTML += full_name.toUpperCase();
         }
 
+    }
+}
+
+function showMessages(){
+    if(userMessages){
+        const myObj = JSON.parse(userMessages);
+        //console.log(myObj);
+        var Messagebox = document.getElementById("Messagebox");
+        Messagebox.innerHTML = '';
+        // console.log("the lenght is"+myObj.length);
+        var newId = myObj.length -1;
+        console.log(myObj[newId].id);
+        if(myObj.length == undefined){
+            Messagebox.innerHTML +='<h2 class="text-center">Say hi to start conversation</h2>';
+            
+        }
+        
+        if(myObj.length != undefined){
+            var newId = myObj.length -1;
+        last_message_id =  (myObj[newId].id);
+        
+        for (let index = 0; index < myObj.length; index++) {
+            //console.log(myObj[index].id)
+            var  conversation_id = myObj[index].conversation_id
+            var id = myObj[index].id;
+            var message = myObj[index].message;
+            var seen = myObj[index].message;
+            var timestamp = myObj[index].timestamp;
+            var user_from = myObj[index].user_from;
+            var user_to = myObj[index].user_to;
+            if(user_from == userId){
+                Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
+                '<div id="'+id+'" class="msgText msgright" style="padding:10px";"display: flex";"position: relative";"border: 1px solid #e2e0e0";">'+
+                                        '<div class="msg">'+message+'</div>'+
+                                        '<div class="timing">'+timestamp+' </div>'+
+                                    '</div>'+
+                                '</li>';
+            }else{
+                Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
+                '<div id="'+id+'" class="msgText msgleft" style="max-width: 80%";"padding: 10px";"display: block";"position: relative";"border: 1px solid #cecece;">'+
+                    '<div class="msg">'+message+'</div>'+
+                        '<span class="timing">'+timestamp+' </span>'+
+                    '</div>'+
+                '</li>';
+            }
+        }
+        }
+    }else{
+        console.log('ERROR IN SHOWING MESSAGE');
+    }
+}
+
+function getNewMessages(){
+    if(conversation_id){
+        
+        if(last_message_id){
+            $.ajax({
+                type:"POST",
+                url: "api/get_new_message.php",
+                data:{conversation_id:conversation_id, last_message_id:last_message_id},
+                success: function(data){ 
+                    console.log(data);
+                   
+                },
+                error: function(){
+                    alert("There was an error.");
+                }
+            });
+
+        }else{
+            GetMessages(); //get messages
+        }
+
+    }else{
+        console.log("ERROR::AT NEW MSG")
     }
 }
 

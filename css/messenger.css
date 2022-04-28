@@ -54,3 +54,17 @@ body{
     background-color: #f1f1f1;
     border-color: inherit;
 }
+
+.msgright {
+    float: right;
+    background: #f6f6f6;
+    text-align: right !important;
+}
+
+.msgleft {
+    float: left !important;
+    text-align: left;
+}
+.msgText{
+    max-width: 80%;
+}

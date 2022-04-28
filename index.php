@@ -65,11 +65,12 @@
                         <div class="h500">
                         <div class="card-body" style="max-height: 432px;overflow: auto;">
                             
-                                <ul class="list-group">
-                                <?php for ($i=0; $i < 20 ; $i++) { ?>
+                                <ul class="list-group" id="Messagebox">
+                                
                                    
-                                    <li class="list-group-item msgbox">A second link item</li>
-                                    <?php } ?>
+                                    <li class="list-group-item msgbox">
+                                        
+                                    </li>
                                 </div>
                             
                         </div>

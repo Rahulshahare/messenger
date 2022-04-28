@@ -53,6 +53,7 @@
                         $_SESSION['profile_pic'] = $row['profile_pic'];
                         $_SESSION['loggedin_time'] = time();
                         setcookie('userId', $row['id'], time() + (86400 * 30), "/");
+                        update_user_status($dbh,'login');
                         header("Location: index.php");
                         exit;
             }else{
@@ -65,14 +66,14 @@
 
 <?php include_once"includes/header.php"; ?>
    
-    <nav class="navbar mybox-shadow">
+    <nav class="navbar mybox-shadow  whiteBackground">
         <div class="container">
             <span class="navbar-brand mb-0 h1">Messenger</span>
         </div>
     </nav>
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col-md-4 mt-5 mybox-shadow p10_35">
+            <div class="col-md-4 mt-5 mybox-shadow p10_35  whiteBackground">
                 <h5 class="text-center mb-3 font_weight300">Sign In</h5>
                 <?php if($error != ''){?>
                     <div class="alert alert-danger" role="alert">

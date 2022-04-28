@@ -1,8 +1,10 @@
 $( document ).ready(function() {
     console.log( "ready!" );
     let userList = [];
-    var messages = '';
+    var messages = [];
     var userId = '';
+    var user_two = '';
+    var conversation_id = '';
     /**
      * A function to get cookie
      * 
@@ -62,6 +64,7 @@ $( document ).ready(function() {
             //     console.log(key , value); // key ,value
             //   });
             var renderUserList;
+            var UI_user_list = document.getElementById("UserList");
               for (let index = 0; index < myObj.length; index++) {
                     var id = myObj[index].id;
                     var full_name = capitalizeFirstLetter(myObj[index].full_name);
@@ -71,7 +74,7 @@ $( document ).ready(function() {
                     var register_on = myObj[index].register_on;
                     var badge = online == 1 ? 'success' :'secondary';
                     var secText = online == 1 ? 'Active now' : last_login == '' ? register_on : last_login ;
-                    var UI_user_list = document.getElementById("UserList");
+                    //var UI_user_list = document.getElementById("UserList");
                     UI_user_list.innerHTML += '<a href="#" id="'+id+'" data-id="'+id+'"  class="UserInList list-group-item list-group-item-action">'+
                                                 '<div class="container">'+
                                                 '<div class="row">'+
@@ -106,27 +109,118 @@ $( document ).ready(function() {
             }
              
         }
+
+        
     }
     
     
 function GetAnatherUser(){
     $('.UserInList').click(function(){
-        // alert(this.id);
+        user_two = this.id;
+        ShowProfileOfUser();
+        GetConversationId();
+        //setTimeout(showUsers, 1000);   
+         //alert(this.id);
         if ($( ".UserInList" ).hasClass('active')) {
             $( ".UserInList" ).removeClass( 'active');
         } else {
           $( "#"+this.id ).addClass( 'active');
         }
+
         return false;
+
     });
     // document.getElementById ("UserInList").addEventListener ("click", myFunction, false);
 
     // function myFunction() {
     // alert("Hello! I am an alert box!!");
     // }
+
+    function GetConversationId(){
+        var user_one = userId;
+        //user_two
+        
+        if(user_two && user_one){
+            var data = 'user_one='+ userId  & 'user_two='+ user_two; 
+            $.ajax({
+                type:"POST",
+                url: "api/get_conversation_id.php",
+                data:{ user_one: user_one, user_two:user_two},
+                success: function(data){ 
+                    console.log(data);
+                    conversation_id = data;
+                    console.log(conversation_id);
+
+                    GetMessages();
+                   
+                },
+                error: function(){
+                    alert("There was an error.");
+                }
+            });
+        }else{
+            alert("ERROR WHILE GETTING CONVERSATION ID");
+        }
+    }
 }
 
+function GetMessages(){
+    if(conversation_id){
+        //working on
+    }else{
+        console.log("ERROR WHILE GETTING INITIAL MESSAGES");
+    }
+} 
+
+$('.sendButton').click(function(){
+    SendMessage();
+});
+
+function SendMessage(){
     
+    var input_msg = document.getElementById("messenger-text").value;
+    document.getElementById("messenger-text").value = "";
+    console.log(input_msg);
+    // var userId 
+    // var user_two 
+    // var conversation_id 
+    if(conversation_id && userId && user_two){
+        $.ajax({
+            type:"POST",
+            url: "api/send_message.php",
+            data:{ user_one: userId, user_two:user_two, conversation_id:conversation_id, message:input_msg},
+            success: function(data){ 
+                console.log(data);
+               
+            },
+            error: function(){
+                alert("There was an error.");
+            }
+        });
+    }else{
+        console.log("ERROR WHILE SENDING MESSAGE");
+    }
+}
+
+function ShowProfileOfUser(){
+    if(!userList){
+        console.log("ERROR WHILE SETTING NAME");
+    }
+    const myObj = JSON.parse(userList);
+    console.log(myObj[0].id);
+    var UserProfileName = document.getElementById("User_two_details");
+    UserProfileName.innerHTML = '';
+    for (let index = 0; index < myObj.length; index++) {
+        var id = myObj[index].id;
+        if(user_two == id){
+            console.log('user 2 is'+ user_two);
+            var full_name = myObj[index].full_name;
+            UserProfileName.innerHTML += full_name.toUpperCase();
+        }
+
+    }
+}
+
 }); //End of on Ready
 
 

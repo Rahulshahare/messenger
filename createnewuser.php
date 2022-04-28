@@ -72,14 +72,14 @@ $user_created = false;
 ?>
 <?php include_once"includes/header.php"; ?>
    
-    <nav class="navbar mybox-shadow">
+    <nav class="navbar mybox-shadow  whiteBackground">
         <div class="container">
             <span class="navbar-brand mb-0 h1">Messenger</span>
         </div>
     </nav>
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col-md-4 mt-5 p10_35 mybox-shadow">
+            <div class="col-md-4 mt-5 p10_35 mybox-shadow  whiteBackground">
                 <h5 class="text-center mb-3 font_weight300">
                     <?php echo $user_created==true ? "NEW ACCOUNT CREATED" : "Create new account" ?>
                 </h5>

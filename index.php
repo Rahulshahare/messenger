@@ -59,14 +59,14 @@
                 </div>
                 <div class="col-7" style="padding: 0;">
                     <div  class="card" style="border-radius: 0px;">
-                        <div class="card-header" style="font-weight: 500;background: none;padding: 1rem;">
-                            Featured
+                        <div class="card-header" id="User_two_details" style="font-weight: 500;background: none;padding: 1rem;">
+                            USERNAME
                         </div>
                         <div class="h500">
                         <div class="card-body" style="max-height: 432px;overflow: auto;">
                             
                                 <ul class="list-group">
-                                <?php for ($i=0; $i < 10 ; $i++) { ?>
+                                <?php for ($i=0; $i < 20 ; $i++) { ?>
                                    
                                     <li class="list-group-item msgbox">A second link item</li>
                                     <?php } ?>

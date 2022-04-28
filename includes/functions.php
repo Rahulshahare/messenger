@@ -18,4 +18,19 @@ function messenger_verify($plainText, $hash){
         return false;
     }
 }
+
+function update_user_status($dbh,$status){
+    //for status say login or logout
+    $status = $status == 'login' ? 1 : 0 ;
+    $user_id = $_SESSION['UserId'];
+    $today = date("Y.m.d H:i:s");
+    $stm = $dbh->prepare(" UPDATE user SET last_login = :last_login, online = :online WHERE id = :id");
+    $stm->execute(
+        array(":last_login"=>"$today",
+        ":online"=>"$status",":id"=>"$user_id")
+    );
+
+
+
+}
 ?>

@@ -78,12 +78,12 @@ $( document ).ready(function() {
         });
     }
         
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-    function showUsers(){
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+function showUsers(){
         if(userList){
-            console.log(userList);
+            // console.log(userList);
             
             
             const myObj = JSON.parse(userList);
@@ -139,7 +139,7 @@ $( document ).ready(function() {
         }
 
         
-    }
+}
     
     
 function GetAnatherUser(){
@@ -217,7 +217,11 @@ function GetMessages(){
 } 
 
 $('.sendButton').click(function(){
-    SendMessage();
+    var input_msg = document.getElementById("messenger-text").value;
+    if(input_msg != ''){
+        SendMessage();
+    }
+    
 });
 
 function submitOnEnter(event){

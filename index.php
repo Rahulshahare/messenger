@@ -78,11 +78,8 @@
                             <div class="msg-form" style="width: 100%;height: 100%;border-radius: 50px;border: 1px solid rgb(219 219 219);padding: 10px;">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-2" style="position: relative;">
-                                            <input type="file" accept="image/*" name="file" class="inputfile form-control">
-                                            <img src="images/image.png" class="img-fluid" style="width: 40%;">
-                                        </div>
-                                        <div class="col-8">
+                                        
+                                        <div class="col-10">
                                             <textarea class="form-control" id="messenger-text" style="height: 38px; border: none;" spellcheck="false" placeholder="Message.."></textarea>
                                         </div>
                                         <div class="col-2">

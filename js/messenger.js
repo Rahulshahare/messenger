@@ -34,7 +34,16 @@ $( document ).ready(function() {
     function OnUserClick(id){
         console.log(id);
     }
-
+    /**
+     * 
+     * @param {id of div} id 
+     */
+    const scrollSmoothlyToBottom = (id) => {
+        const element = $(`#${id}`);
+        element.animate({
+           scrollTop: element.prop("scrollHeight")
+        }, 500);
+     }
     /**
      * function to get user details
      */
@@ -176,7 +185,10 @@ function GetMessages(){
             success: function(data){ 
                 console.log(data);
                 userMessages = data;
+                var count = JSON.parse(data);
+                console.log("lenght of msg"+count.length)
                 showMessages();
+                scrollSmoothlyToBottom('scrollingComponent');
             },
             error: function(){
                 alert("There was an error.");
@@ -258,12 +270,12 @@ function showMessages(){
         console.log(myObj[newId].id);
         if(myObj.length == undefined){
             Messagebox.innerHTML +='<h2 class="text-center">Say hi to start conversation</h2>';
-            
+            return false;
         }
         
         if(myObj.length != undefined){
             var newId = myObj.length -1;
-        last_message_id =  (myObj[newId].id);
+            last_message_id =  (myObj[newId].id);
         
         for (let index = 0; index < myObj.length; index++) {
             //console.log(myObj[index].id)
@@ -276,7 +288,7 @@ function showMessages(){
             var user_to = myObj[index].user_to;
             if(user_from == userId){
                 Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
-                '<div id="'+id+'" class="msgText msgright" style="padding:10px;display: flex;position: relative;border: 1px solid #e2e0e0";>'+
+                '<div id="'+id+'" class="msgText msgright" style="padding:10px;position: relative;border: 1px solid #e2e0e0";>'+
                                         '<div class="msg">'+message+'</div>'+
                                         '<div class="timing">'+timestamp+' </div>'+
                                     '</div>'+
@@ -306,12 +318,21 @@ function getNewMessages(){
                 data:{conversation_id:conversation_id, last_message_id:last_message_id},
                 success: function(data){ 
                     console.log(data);
-                    if(data != undefined){
-                    // userMessages = userMessages + data;
-                    var obj = JSON.parse(userMessages);
-                    obj.push(data);
-                    userMessages = JSON.stringify(obj);
+                    console.log("lenght"+JSON.parse(data).length);
+                    if(JSON.parse(data).length != undefined){
+                    //userMessages.push(data);
+                        var obj = JSON.parse(userMessages);
+                        var NewObj = JSON.parse(data);
+                        for (let index = 0; index < NewObj.length; index++) {
+                            obj.push(NewObj[index]);
+                        }
+                        
+                        //back object mode
+                        userMessages = JSON.stringify(obj);
+                        
+                        scrollSmoothlyToBottom('scrollingComponent');
                     
+                    //console.log("ALL MESSAGES"+userMessages);
                      showMessages();
                     }
                    
@@ -329,7 +350,7 @@ function getNewMessages(){
         console.log("ERROR::AT NEW MSG")
     }
 
-    setTimeout(getNewMessages, 10000);
+    setTimeout(getNewMessages, 5000);
 }
 
 }); //End of on Ready

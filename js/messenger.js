@@ -276,14 +276,14 @@ function showMessages(){
             var user_to = myObj[index].user_to;
             if(user_from == userId){
                 Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
-                '<div id="'+id+'" class="msgText msgright" style="padding:10px";"display: flex";"position: relative";"border: 1px solid #e2e0e0";">'+
+                '<div id="'+id+'" class="msgText msgright" style="padding:10px;display: flex;position: relative;border: 1px solid #e2e0e0";>'+
                                         '<div class="msg">'+message+'</div>'+
                                         '<div class="timing">'+timestamp+' </div>'+
                                     '</div>'+
                                 '</li>';
             }else{
                 Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
-                '<div id="'+id+'" class="msgText msgleft" style="max-width: 80%";"padding: 10px";"display: block";"position: relative";"border: 1px solid #cecece;">'+
+                '<div id="'+id+'" class="msgText msgleft" style="max-width: 80%;padding: 10px;display: block;position: relative;border: 1px solid #cecece";>'+
                     '<div class="msg">'+message+'</div>'+
                         '<span class="timing">'+timestamp+' </span>'+
                     '</div>'+

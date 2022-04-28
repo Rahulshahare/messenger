@@ -65,13 +65,7 @@
                         <div class="h500">
                         <div id="scrollingComponent" class="card-body"  style="max-height: 432px;min-height: 432px;;overflow: auto;">
                             
-                                <ul class="list-group" id="Messagebox">
-                                
-                                   
-                                    <li class="list-group-item msgbox">
-                                        
-                                    </li>
-                                </div>
+                                <ul class="list-group" id="Messagebox"></ul>
                             
                         </div>
                         <div class="card-footer" style="height: 68px;border-top: none;background: none;">
@@ -80,7 +74,7 @@
                                     <div class="row">
                                         <div class="col-2" style="position: relative;">
                                             <input type="file" accept="image/*" name="file" class="inputfile form-control">
-                                            <img src="images/image.png" class="img-fluid" style="width: 40%;">
+                                            <img src="images/image.png" class="img-fluid" style="width:30%;">
                                         </div>
                                         <div class="col-8">
                                             <textarea class="form-control" id="messenger-text" style="height: 38px; border: none;" spellcheck="false" placeholder="Message.."></textarea>

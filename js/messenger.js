@@ -184,11 +184,13 @@ function GetMessages(){
             data:{conversation_id:conversation_id},
             success: function(data){ 
                 console.log(data);
-                userMessages = data;
-                var count = JSON.parse(data);
-                console.log("lenght of msg"+count.length)
-                showMessages();
-                scrollSmoothlyToBottom('scrollingComponent');
+                if(JSON.parse(data).length != undefined){
+                    userMessages = data;
+                    var count = JSON.parse(data);
+                    console.log("lenght of msg"+count.length)
+                    showMessages();
+                    scrollSmoothlyToBottom('scrollingComponent');
+                }
             },
             error: function(){
                 alert("There was an error.");

@@ -23,6 +23,8 @@ $( document ).ready(function() {
     userId = getCookie("userId"); //getting cookie
     console.log(userId);
     
+    getNewMessages();
+
     //getting user details
     if(userId){
         //console.log('getting data');
@@ -214,6 +216,7 @@ function SendMessage(){
             data:{ user_one: userId, user_two:user_two, conversation_id:conversation_id, message:input_msg},
             success: function(data){ 
                 console.log(data);
+                getNewMessages();
                
             },
             error: function(){
@@ -303,6 +306,12 @@ function getNewMessages(){
                 data:{conversation_id:conversation_id, last_message_id:last_message_id},
                 success: function(data){ 
                     console.log(data);
+                    // userMessages = userMessages + data;
+                    var obj = JSON.parse(userMessages);
+                    obj.push(data);
+                    userMessages = JSON.stringify(obj);
+                    
+                     showMessages();
                    
                 },
                 error: function(){
@@ -317,6 +326,8 @@ function getNewMessages(){
     }else{
         console.log("ERROR::AT NEW MSG")
     }
+
+    setTimeout(getNewMessages, 10000);
 }
 
 }); //End of on Ready

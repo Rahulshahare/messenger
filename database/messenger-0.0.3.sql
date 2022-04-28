@@ -197,14 +197,14 @@ INSERT INTO `user` (`id`, `full_name`, `email`, `password`, `profile_pic`, `regi
 (1, 'wizkumar', 'wiz@messenger.com', 'MTIzNDU2', 'letter-w.png', '2022.04.26 23:46:32', '2022.04.28 09:16:02', 0),
 (2, 'wizkumar', 'wiz2@messenger.com', '$2y$10$G/3gzdBiF9/MZSkV8DeVp.fTXDGW1zrg.8pC4ckvaNKRBCjpQThNa', 'letter-w.png', '2022.04.26 23:48:21', '', 0),
 (3, 'wizkumar3', 'wiz3@messenger.com', '$2y$10$YEwsS1PSVSHlwIVBR/.izOyAc2B8uu.55DvFk3uo.Gh9HsWfllZRC', 'letter-w.png', '2022.04.27 04:54:53', '', 0),
-(4, 'kgf3', 'kgf@messenger.com', 'MTIzNDU2', 'letter-k.png', '2022.04.27 05:24:41', '2022.04.28 09:20:49', 1),
+(4, 'kgf3', 'kgf@messenger.com', 'MTIzNDU2', 'letter-k.png', '2022.04.27 05:24:41', '2022.04.28 09:20:49', 0),
 (5, 'test', 'test@test.test', '', 'letter-t.png', '2022.04.27 12:12:45', '', 0),
 (6, 'hkjh', 'only.facebook.access@gmail.com', '', 'letter-h.png', '2022.04.27 13:09:16', '', 0),
 (7, 'wizkumar', 'wiz5@messenger.com', '', 'letter-w.png', '2022.04.27 13:11:19', '', 0),
 (8, 'wizkumar', 're@gmail.com', 'Nzk4Nzk4', 'letter-w.png', '2022.04.27 13:19:49', '', 0),
 (9, 'test2', 'test2@gmail.com', 'MTIzNDU2', 'letter-t.png', '2022.04.27 13:21:17', '2022.04.27 13:09:16', 0),
 (10, 'messenger', 'me@messenger.com', 'ODk5OTQ0NTczM1JAaHVs', 'letter-m.png', '2022.04.27 13:22:34', '2022.04.28 05:46:16', 0),
-(11, 'guruwar', 'ff@ff.ff', 'ZmZmZg==', 'letter-g.png', '2022.04.28 09:17:41', '2022.04.28 09:17:52', 1);
+(11, 'guruwar', 'ff@ff.ff', 'ZmZmZg==', 'letter-g.png', '2022.04.28 09:17:41', '2022.04.28 09:17:52', 0);
 
 --
 -- Indexes for dumped tables

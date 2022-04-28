@@ -3,7 +3,7 @@ if(!empty($_POST['conversation_id'])){
     $conversation_id = $_POST['conversation_id'];
 
     include_once"../database/db.php";
-    $stm = $dbh->prepare('SELECT * from ( SELECT * from messages where conversation_id = :conversation_id ORDER BY id DESC  ) sub ORDER BY id ASC');
+    $stm = $dbh->prepare('SELECT * from ( SELECT * from messages where conversation_id = :conversation_id ORDER BY id DESC LIMIT 20 ) sub ORDER BY id ASC');
         //$stm = $dbh->prepare('SELECT * FROM messages WHERE conversation_id = :conversation_id ORDER BY id DESC ');
         $stm->bindValue(':conversation_id',$conversation_id);
         $stm->execute();

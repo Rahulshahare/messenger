@@ -14,7 +14,7 @@ if(!empty($_POST['conversation_id']) && !empty($_POST['last_message_id'])){
                 print_r($json_data);
                 
             }else{
-                echo"{}";
+                echo "{}";
             }
 }else{
     echo"ERROR IS GETTING NEW MSG SERVER";

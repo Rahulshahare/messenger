@@ -68,3 +68,9 @@ body{
 .msgText{
     max-width: 80%;
 }
+
+.secondary-text {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-secondary-rgb),var(--bs-text-opacity))!important;
+    font-size: 10px;
+}

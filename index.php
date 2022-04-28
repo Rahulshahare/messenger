@@ -63,7 +63,7 @@
                             USERNAME
                         </div>
                         <div class="h500">
-                        <div id="scrollingComponent" class="card-body"  style="max-height: 432px;overflow: auto;">
+                        <div id="scrollingComponent" class="card-body"  style="max-height: 432px;min-height: 432px;;overflow: auto;">
                             
                                 <ul class="list-group" id="Messagebox">
                                 

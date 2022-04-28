@@ -6,6 +6,22 @@ $( document ).ready(function() {
     var user_two = '';
     var conversation_id = '';
     var last_message_id = '';
+
+
+    /**
+     * 
+     */
+     $('#scrollingComponent').scroll(function() {
+        var pos = $('#scrollingComponent').scrollTop();
+        if (pos == 0) {
+            //alert('top of the div');
+            //can be useful for getting old messages
+        }
+    });
+
+
+
+
     /**
      * A function to get cookie
      * 
@@ -85,7 +101,7 @@ $( document ).ready(function() {
                     var last_login = myObj[index].last_login;
                     var register_on = myObj[index].register_on;
                     var badge = online == 1 ? 'success' :'secondary';
-                    var secText = online == 1 ? 'Active now' : last_login == '' ? register_on : last_login ;
+                    var secText = online == 1 ? 'Active now' : last_login == '' ? time_ago(register_on) : time_ago(last_login) ;
                     //var UI_user_list = document.getElementById("UserList");
                     UI_user_list.innerHTML += '<a href="#" id="'+id+'" data-id="'+id+'"  class="UserInList list-group-item list-group-item-action">'+
                                                 '<div class="container">'+
@@ -184,13 +200,12 @@ function GetMessages(){
             data:{conversation_id:conversation_id},
             success: function(data){ 
                 console.log(data);
-                if(JSON.parse(data).length != undefined){
                     userMessages = data;
                     var count = JSON.parse(data);
                     console.log("lenght of msg"+count.length)
                     showMessages();
                     scrollSmoothlyToBottom('scrollingComponent');
-                }
+               
             },
             error: function(){
                 alert("There was an error.");
@@ -269,10 +284,10 @@ function showMessages(){
         Messagebox.innerHTML = '';
         // console.log("the lenght is"+myObj.length);
         var newId = myObj.length -1;
-        console.log(myObj[newId].id);
+        //console.log(myObj[newId].id);
+        //console.log("object length"+myObj.length);
         if(myObj.length == undefined){
             Messagebox.innerHTML +='<h2 class="text-center">Say hi to start conversation</h2>';
-            return false;
         }
         
         if(myObj.length != undefined){
@@ -288,18 +303,19 @@ function showMessages(){
             var timestamp = myObj[index].timestamp;
             var user_from = myObj[index].user_from;
             var user_to = myObj[index].user_to;
+            var timeAgo = time_ago(timestamp);
             if(user_from == userId){
                 Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
                 '<div id="'+id+'" class="msgText msgright" style="padding:10px;position: relative;border: 1px solid #e2e0e0";>'+
                                         '<div class="msg">'+message+'</div>'+
-                                        '<div class="timing">'+timestamp+' </div>'+
+                                        '<div class="secondary-text">'+timeAgo+' </div>'+
                                     '</div>'+
                                 '</li>';
             }else{
                 Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
                 '<div id="'+id+'" class="msgText msgleft" style="max-width: 80%;padding: 10px;display: block;position: relative;border: 1px solid #cecece";>'+
                     '<div class="msg">'+message+'</div>'+
-                        '<span class="timing">'+timestamp+' </span>'+
+                        '<span class="secondary-text">'+timeAgo+' </span>'+
                     '</div>'+
                 '</li>';
             }
@@ -354,6 +370,9 @@ function getNewMessages(){
 
     setTimeout(getNewMessages, 5000);
 }
+
+
+
 
 }); //End of on Ready
 

@@ -176,6 +176,16 @@ $('.sendButton').click(function(){
     SendMessage();
 });
 
+function submitOnEnter(event){
+    if(event.which === 13){
+       // event.target.form.dispatchEvent(new Event("submit", {cancelable: true}));
+        event.preventDefault(); // Prevents the addition of a new line in the text field (not needed in a lot of cases)
+        SendMessage();
+    }
+}
+
+document.getElementById("messenger-text").addEventListener("keypress", submitOnEnter);
+
 function SendMessage(){
     
     var input_msg = document.getElementById("messenger-text").value;
@@ -184,7 +194,7 @@ function SendMessage(){
     // var userId 
     // var user_two 
     // var conversation_id 
-    if(conversation_id && userId && user_two){
+    if(conversation_id && userId && user_two && input_msg != ''){
         $.ajax({
             type:"POST",
             url: "api/send_message.php",

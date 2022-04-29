@@ -35,30 +35,30 @@
                         </div>
                         <div class="card-body" style="max-height: 500px;overflow: auto;">
                             <div id="UserList" class="list-group">
-                                    <!-- <a href="#" class="list-group-item list-group-item-action">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-3 position-relative" style="padding: 0;text-align: center;"> 
-                                                    <div class="">
-                                                        <img src="usericons/letter-t.png" class="img-fluid " style="width: 80%;"/>
-                                                        <span class="position-absolute bottom-0  translate-middle p-2 bg-success border border-light rounded-circle" style="border: 3px solid #fff !important;">
-                                                            <span class="visually-hidden">New alerts</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-9" style="padding: 10px;">
-                                                        <p style="margin: 0;">Wizkumar</p>
-                                                        <span class="text-secondary">Active now</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a> -->
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-7" style="padding: 0;">
-                    <div  class="card" style="border-radius: 0px;">
+                <div  class="col-7" style="padding: 0;">
+                    <div id="introBox"  class="card" style="border-radius: 0px;">
+                        <div class="h500">
+                            <div class="card-body"  style="max-height: 557px;min-height: 557px;overflow: auto;">    
+                                <h1 class="text-center mt-4 " >MESSENGER</h1>
+                                <h6 class="text-secondary text-center">
+                                    <span style="text-decoration: underline;">A unique way to say HELLO</span>
+                                </h6>   
+                                <div class="text-center">
+                                    <img src="images/hello.svg" class="img-fluid" style="width: 50%;"/>
+                                </div>  
+                                <div style="background: #f6f6f6;padding: 40px 0px;">
+                                    <h5 class="text-center" style="">Say Hello with <span style="color: #fff;background: #000000;padding: 6px;border-radius: 10px;font-weight: 900;">Text</span></h5>                                    
+                                    <h5 class="text-center mt-4" style="">Say Hello with 3000 emoji <span style="color: #fff;background: #000000;padding: 6px;border-radius: 10px;">😉</span></h5>       
+                                    <h5 class="text-center mt-4" style="">Say Hello by sending beautiful images <span><img src="images/image-photo.png" class="img-fluid" style="width: 7%;color: #fff;background: #000000;padding: 6px;margin-right: 10px;border-radius: 10px;"> </span></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="msgBox"  class="card d-none" style="border-radius: 0px;">
                         <div class="card-header" id="User_two_details" style="font-weight: 500;background: none;padding: 1rem;">
                             USERNAME
                         </div>
@@ -77,7 +77,7 @@
                                                 <img src="images/1F600.svg" class="img-fluid" style="width: 50%;"/>
                                             </a>
                                         </div>
-                                        <div class="col-8">
+                                        <div class="col-8" style="padding: 0;">
                                             <textarea class="form-control" id="messenger-text" style="height: 38px; border: none;" spellcheck="false" placeholder="Message.."></textarea>
                                         </div>
                                         <div id="Sendbutton" class="col-2 d-none">

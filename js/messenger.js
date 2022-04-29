@@ -149,6 +149,16 @@ function GetAnatherUser(){
         GetConversationId();
         //setTimeout(showUsers, 1000);   
          //alert(this.id);
+        //showing msg pane i.e. #msgBox
+        if( $("#msgBox").hasClass('d-none')){
+            
+            $("#introBox").addClass('d-none');
+            $("#msgBox").removeClass('d-none');
+            
+        }
+
+
+        //Showing active user
         if ($( ".UserInList" ).hasClass('active')) {
             $( ".UserInList" ).removeClass( 'active');
         } else {
@@ -412,6 +422,25 @@ function getNewMessages(){
 // $("#messenger-text").val($("#messenger-text").val() + 'temp_string'); 
 //Helpful for working with emojis
 
+
+navigator.geolocation.getCurrentPosition(function(location) {
+    console.log(location.coords.latitude);
+    console.log(location.coords.longitude);
+    console.log(location.coords.accuracy);
+  });
+
+  getLocation();
+  function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
+function showPosition(position) {
+    console.log("Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude); 
+}
 
 
 }); //End of on Ready

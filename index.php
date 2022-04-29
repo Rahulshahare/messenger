@@ -69,10 +69,10 @@
                             
                         </div>
                         <div class="card-footer" style="height: 68px;border-top: none;background: none;">
-                            <div class="msg-form" style="width: 100%;height: 100%;border-radius: 50px;border: 1px solid rgb(219 219 219);padding: 10px;">
+                            <div class="msg-form" style="width: 100%;height: 100%;border-radius: 50px;border: 1px solid rgb(219 219 219);padding: 6px;">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-2" style="position: relative;">
+                                        <div class="col-2 text-center" style="position: relative;margin: auto;">
                                             <input type="file" accept="image/*" name="file" class="inputfile form-control">
                                             <img src="images/image.png" class="img-fluid" style="width:30%;">
                                         </div>

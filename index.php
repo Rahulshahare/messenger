@@ -72,15 +72,20 @@
                             <div class="msg-form" style="width: 100%;height: 100%;border-radius: 50px;border: 1px solid rgb(219 219 219);padding: 6px;">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-2 text-center" style="position: relative;margin: auto;">
-                                            <input type="file" accept="image/*" name="file" class="inputfile form-control">
-                                            <img src="images/image.png" class="img-fluid" style="width:30%;">
+                                        <div class="col-2 text-center" style="margin: auto;">
+                                            <a class="btn" style="display: table-row;" title="Select emoji">
+                                                <img src="images/1F600.svg" class="img-fluid" style="width: 50%;"/>
+                                            </a>
                                         </div>
                                         <div class="col-8">
                                             <textarea class="form-control" id="messenger-text" style="height: 38px; border: none;" spellcheck="false" placeholder="Message.."></textarea>
                                         </div>
-                                        <div class="col-2">
+                                        <div id="Sendbutton" class="col-2 d-none">
                                             <button type="button" class="btn btn-link sendButton" style="text-decoration: none;">Send</button>
+                                        </div>
+                                        <div id="Imagepicker" class="col-2 text-center" style="position: relative;margin: auto;">
+                                            <input type="file" accept="image/*" name="file" class="inputfile form-control">
+                                            <img src="images/image.png" class="img-fluid" style="width:30%;"/>
                                         </div>
                                     </div>
                                 </div>

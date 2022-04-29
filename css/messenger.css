@@ -58,7 +58,6 @@ body{
 .msgright {
     float: right;
     background: #f6f6f6;
-    text-align: right !important;
 }
 
 .msgleft {
@@ -82,4 +81,8 @@ body{
 
 .displayNone{
     display: none;
+}
+
+.preWrap{
+    white-space: pre-wrap;
 }

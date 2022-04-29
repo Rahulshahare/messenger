@@ -221,8 +221,16 @@ $('.sendButton').click(function(){
     var st = input_msg.trim();
     if(st != ''){
         SendMessage();
+        if( $('#Imagepicker').hasClass('d-none') ){
+            $('#Imagepicker').removeClass('d-none');
+            $('#Sendbutton').addClass('d-none');
+         }
     }else{
         document.getElementById("messenger-text").value = "";
+        if( $('#Imagepicker').hasClass('d-none') ){
+            $('#Imagepicker').removeClass('d-none');
+            $('#Sendbutton').addClass('d-none');
+         }
     }
     
 });
@@ -235,10 +243,22 @@ function submitOnEnter(event){
     }
 }
 
+//function to check wheather to show send button or image picker
 $('#messenger-text').bind('input propertychange', function() {
     console.log(this.value);
-     if(this.value.length >= 0){
+     if(this.value.length){
+         //hide image show send
+         if( $('#Sendbutton').hasClass('d-none') ){
+            $('#Sendbutton').removeClass('d-none');
+            $('#Imagepicker').addClass('d-none');
+         }
           console.log(this.value.length);
+        }else{
+        //hide send show image
+        if( $('#Imagepicker').hasClass('d-none') ){
+            $('#Imagepicker').removeClass('d-none');
+            $('#Sendbutton').addClass('d-none');
+         }
         }
     
   });
@@ -387,6 +407,10 @@ function getNewMessages(){
     setTimeout(getNewMessages, 5000);
 }
 
+
+
+// $("#messenger-text").val($("#messenger-text").val() + 'temp_string'); 
+//Helpful for working with emojis
 
 
 

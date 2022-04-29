@@ -63,7 +63,7 @@ $( document ).ready(function() {
     /**
      * function to get user details
      */
-    function  getUserDetails(id){
+function  getUserDetails(id){
         $.ajax({
             url: "api/get_user_details.php",
             data:{ userId: id},
@@ -76,7 +76,7 @@ $( document ).ready(function() {
                 alert("There was an error.");
             }
         });
-    }
+}
         
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -218,8 +218,11 @@ function GetMessages(){
 
 $('.sendButton').click(function(){
     var input_msg = document.getElementById("messenger-text").value;
-    if(input_msg != ''){
+    var st = input_msg.trim();
+    if(st != ''){
         SendMessage();
+    }else{
+        document.getElementById("messenger-text").value = "";
     }
     
 });
@@ -228,11 +231,19 @@ function submitOnEnter(event){
     if(event.which === 13){
        // event.target.form.dispatchEvent(new Event("submit", {cancelable: true}));
         event.preventDefault(); // Prevents the addition of a new line in the text field (not needed in a lot of cases)
-        SendMessage();
+        //SendMessage();
     }
 }
 
-document.getElementById("messenger-text").addEventListener("keypress", submitOnEnter);
+$('#messenger-text').bind('input propertychange', function() {
+    console.log(this.value);
+     if(this.value.length >= 0){
+          console.log(this.value.length);
+        }
+    
+  });
+
+//document.getElementById("messenger-text").addEventListener("keypress", submitOnEnter);
 
 function SendMessage(){
     
@@ -312,14 +323,14 @@ function showMessages(){
             if(user_from == userId){
                 Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
                 '<div id="'+id+'" class="msgText msgright" style="padding:10px;position: relative;border: 1px solid #e2e0e0";>'+
-                                        '<div class="msg">'+message+'</div>'+
+                                        '<div class="msg"><div class="preWrap">'+message+'</div></div>'+
                                         '<div class="secondary-text">'+timeAgo+' </div>'+
                                     '</div>'+
                                 '</li>';
             }else{
                 Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
                 '<div id="'+id+'" class="msgText msgleft" style="max-width: 80%;padding: 10px;display: block;position: relative;border: 1px solid #cecece";>'+
-                    '<div class="msg">'+message+'</div>'+
+                    '<div class="msg"><div class="preWrap">'+message+'</div></div>'+
                         '<span class="secondary-text">'+timeAgo+' </span>'+
                     '</div>'+
                 '</li>';

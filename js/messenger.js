@@ -243,6 +243,7 @@ function SendMessage(){
     // var user_two 
     // var conversation_id 
     if(conversation_id && userId && user_two && input_msg != ''){
+        input_msg = encodeURIComponent(input_msg);
         $.ajax({
             type:"POST",
             url: "api/send_message.php",

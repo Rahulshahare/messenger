@@ -3,7 +3,7 @@ if(!empty($_POST['user_one']) && !empty($_POST['user_two']) && !empty($_POST['co
     $user_one = $_POST['user_one'];
     $user_two = $_POST['user_two'];
     $conversation_id = $_POST['conversation_id'];
-    $message = $_POST['message'];
+    $message = urldecode($_POST['message']);
 
     include_once"../database/db.php";
     $stm = $dbh->prepare('INSERT INTO messages 

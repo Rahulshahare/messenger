@@ -106,7 +106,7 @@ function showUsers(){
                     UI_user_list.innerHTML += '<a href="#" id="'+id+'" data-id="'+id+'"  class="UserInList list-group-item list-group-item-action">'+
                                                 '<div class="container">'+
                                                 '<div class="row">'+
-                                                '<div class="col-3 position-relative" style="padding: 0;text-align: center;">'+
+                                                '<div class="col-3 position-relative text-center" style="padding: 0;">'+
                                                 '<div>'+
                                                 '<img src="usericons/'+profile_pic+'" class="img-fluid " style="width: 80%;"/>'+
                                                 '<span class="position-absolute bottom-0  translate-middle p-2 bg-'+ badge +' border border-light rounded-circle" style="border: 3px solid #fff !important;">'+
@@ -168,15 +168,11 @@ function GetAnatherUser(){
         return false;
 
     });
-    // document.getElementById ("UserInList").addEventListener ("click", myFunction, false);
-
-    // function myFunction() {
-    // alert("Hello! I am an alert box!!");
-    // }
-
-    function GetConversationId(){
-        var user_one = userId;
-        //user_two
+ 
+}
+function GetConversationId(){
+    var user_one = userId;
+    //user_two
         
         if(user_two && user_one){
             var data = 'user_one='+ userId  & 'user_two='+ user_two; 
@@ -185,9 +181,9 @@ function GetAnatherUser(){
                 url: "api/get_conversation_id.php",
                 data:{ user_one: user_one, user_two:user_two},
                 success: function(data){ 
-                    console.log(data);
+                    //console.log(data);
                     conversation_id = data;
-                    console.log(conversation_id);
+                    //console.log(conversation_id);
 
                     GetMessages();
                    
@@ -199,8 +195,8 @@ function GetAnatherUser(){
         }else{
             alert("ERROR WHILE GETTING CONVERSATION ID");
         }
-    }
 }
+
 
 function GetMessages(){
     if(conversation_id){
@@ -209,10 +205,10 @@ function GetMessages(){
             url: "api/get_messages.php",
             data:{conversation_id:conversation_id},
             success: function(data){ 
-                console.log(data);
+                //console.log(data);
                     userMessages = data;
-                    var count = JSON.parse(data);
-                    console.log("lenght of msg"+count.length)
+                    var countLength = JSON.parse(data);
+                    //console.log("lenght of msg "+countLength.length)
                     showMessages();
                     scrollSmoothlyToBottom('scrollingComponent');
                
@@ -255,23 +251,24 @@ function submitOnEnter(event){
 
 //function to check wheather to show send button or image picker
 $('#messenger-text').bind('input propertychange', function() {
-    console.log(this.value);
+    //console.log(this.value);
      if(this.value.length){
-         //hide image show send
-         if( $('#Sendbutton').hasClass('d-none') ){
-            $('#Sendbutton').removeClass('d-none');
-            $('#Imagepicker').addClass('d-none');
-         }
-          console.log(this.value.length);
+        //console.log(this.value.length);
+            //hide image show send
+            if( $('#Sendbutton').hasClass('d-none') ){
+                $('#Sendbutton').removeClass('d-none');
+                $('#Imagepicker').addClass('d-none');
+            }
+          
         }else{
-        //hide send show image
-        if( $('#Imagepicker').hasClass('d-none') ){
-            $('#Imagepicker').removeClass('d-none');
-            $('#Sendbutton').addClass('d-none');
-         }
+            //hide send show image
+            if( $('#Imagepicker').hasClass('d-none') ){
+                $('#Imagepicker').removeClass('d-none');
+                $('#Sendbutton').addClass('d-none');
+            }
         }
     
-  });
+});
 
 //document.getElementById("messenger-text").addEventListener("keypress", submitOnEnter);
 
@@ -279,10 +276,8 @@ function SendMessage(){
     
     var input_msg = document.getElementById("messenger-text").value;
     document.getElementById("messenger-text").value = "";
-    console.log(input_msg);
-    // var userId 
-    // var user_two 
-    // var conversation_id 
+    //console.log("Entered Message is "+input_msg);
+
     if(conversation_id && userId && user_two && input_msg != ''){
         input_msg = encodeURIComponent(input_msg);
         $.ajax({
@@ -290,7 +285,7 @@ function SendMessage(){
             url: "api/send_message.php",
             data:{ user_one: userId, user_two:user_two, conversation_id:conversation_id, message:input_msg},
             success: function(data){ 
-                console.log(data);
+                console.log("STATUS::"+data.trim());
                 getNewMessages();
                
             },
@@ -299,7 +294,7 @@ function SendMessage(){
             }
         });
     }else{
-        console.log("ERROR WHILE SENDING MESSAGE");
+        console.log("STATUS::ERROR WHILE SENDING MESSAGE");
     }
 }
 
@@ -308,13 +303,13 @@ function ShowProfileOfUser(){
         console.log("ERROR WHILE SETTING NAME");
     }
     const myObj = JSON.parse(userList);
-    console.log(myObj[0].id);
+    //console.log(myObj[0].id);
     var UserProfileName = document.getElementById("User_two_details");
     UserProfileName.innerHTML = '';
     for (let index = 0; index < myObj.length; index++) {
         var id = myObj[index].id;
         if(user_two == id){
-            console.log('user 2 is'+ user_two);
+            console.log('user 2 is '+ user_two);
             var full_name = myObj[index].full_name;
             UserProfileName.innerHTML += full_name.toUpperCase();
         }
@@ -381,8 +376,8 @@ function getNewMessages(){
                 url: "api/get_new_message.php",
                 data:{conversation_id:conversation_id, last_message_id:last_message_id},
                 success: function(data){ 
-                    console.log(data);
-                    console.log("lenght"+JSON.parse(data).length);
+                    //console.log(data);
+                    //console.log("lenght"+JSON.parse(data).length);
                     if(JSON.parse(data).length != undefined){
                     //userMessages.push(data);
                         var obj = JSON.parse(userMessages);
@@ -411,7 +406,7 @@ function getNewMessages(){
         }
 
     }else{
-        console.log("ERROR::AT NEW MSG")
+        console.log("STATUS::ANATHER USER NOT SELECTED");
     }
 
     setTimeout(getNewMessages, 5000);

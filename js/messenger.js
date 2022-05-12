@@ -272,9 +272,15 @@ $('#messenger-text').bind('input propertychange', function() {
 
 //document.getElementById("messenger-text").addEventListener("keypress", submitOnEnter);
 
-function SendMessage(){
+function SendMessage(picture = null){
+    var input_msg
+    if(picture){
+        input_msg =picture;
+    }else{
+        input_msg = document.getElementById("messenger-text").value;
+    }
     
-    var input_msg = document.getElementById("messenger-text").value;
+    //var input_msg = document.getElementById("messenger-text").value;
     document.getElementById("messenger-text").value = "";
     //console.log("Entered Message is "+input_msg);
 
@@ -348,6 +354,12 @@ function showMessages(){
             var timestamp = myObj[index].timestamp;
             var user_from = myObj[index].user_from;
             var user_to = myObj[index].user_to;
+            
+            var hasTest = message.includes("Image::");
+            if(hasTest == true){
+                var image = message.replace("Image::","");
+                message = '<img  src="uploads/'+image+'" class="img-fluid" />';
+            }
             var timeAgo = time_ago(timestamp);
             if(user_from == userId){
                 Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
@@ -418,7 +430,7 @@ function getNewMessages(){
 
 
 
- $("#messenger-text").val($("#messenger-text").val() + 'temp_string'); 
+//$("#messenger-text").val($("#messenger-text").val() + 'temp_string'); 
 //Helpful for working with emojis
 
 
@@ -440,6 +452,40 @@ function getNewMessages(){
 //     console.log("Latitude: " + position.coords.latitude + 
 //     "<br>Longitude: " + position.coords.longitude); 
 // }
+
+// $("#send_image").on('change', (function(e){
+//     var form_data = new FormData(document.getElementById("send_image"));
+//     console.log(formData)
+// }))
+
+let imageUpload = document.getElementById("send_image");
+// display file name if file has been selected
+imageUpload.onchange = function() {
+  let input = this.files[0];
+  var formData = new FormData()
+  formData.append('userImage', input)
+  if (input) {
+    console.log(input);
+    $.ajax({
+        type:"POST",
+        url: "upload.php",
+        data:formData,
+        processData: false,
+        contentType:false,
+        success: function(data){ 
+            console.log("Image::"+data);
+            //saveTODB
+            SendMessage(picture = "Image::"+data)
+        },
+        error: function(){
+            alert("There was an error.");
+        }
+    });
+    
+  } else {
+    //console.log("Please select a file");
+  }
+};
 
 
 }); //End of on Ready

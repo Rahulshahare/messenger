@@ -84,7 +84,9 @@
                                             <button type="button" class="btn btn-link sendButton" style="text-decoration: none;">Send</button>
                                         </div>
                                         <div id="Imagepicker" class="col-2 text-center" style="position: relative;margin: auto;">
-                                            <input type="file" accept="image/*" name="file" class="inputfile form-control">
+                                        <form enctype="multipart/form-data" name='imageform' role="form" id="imageform" method="post" action="#">
+                                            <input type="file" id="send_image" accept="image/*" name="file" class="inputfile form-control">
+                                        </form>
                                             <img src="images/image.png" class="img-fluid" style="width:30%;"/>
                                         </div>
                                     </div>

@@ -7,7 +7,6 @@ $( document ).ready(function() {
     var conversation_id = '';
     var last_message_id = '';
 
-
     /**
      * 
      */
@@ -358,7 +357,7 @@ function showMessages(){
             var hasTest = message.includes("Image::");
             if(hasTest == true){
                 var image = message.replace("Image::","");
-                message = '<img  src="uploads/'+image+'" class="img-fluid" />';
+                message = '<a data-fancybox="gallery" href="#" data-src="uploads/'+image+'"><img  src="uploads/'+image+'" class="img-fluid" /></a>';
             }
             var timeAgo = time_ago(timestamp);
             if(user_from == userId){
@@ -486,6 +485,11 @@ imageUpload.onchange = function() {
     //console.log("Please select a file");
   }
 };
+
+// 
+Fancybox.bind('[data-fancybox="gallery"]', {
+    infinite: false
+});
 
 
 }); //End of on Ready

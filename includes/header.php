@@ -7,7 +7,10 @@
 
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fancybox.css" rel="stylesheet">
+    <link href="css/panzoom.css" rel="stylesheet">
     <link href="css/messenger.css?v=0.1.1" rel="stylesheet">
+    
 
     <title>Messenger</title>
   </head>

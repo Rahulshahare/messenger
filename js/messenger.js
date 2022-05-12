@@ -311,7 +311,11 @@ function ShowProfileOfUser(){
         if(user_two == id){
             console.log('user 2 is '+ user_two);
             var full_name = myObj[index].full_name;
-            UserProfileName.innerHTML += full_name.toUpperCase();
+            var online = myObj[index].online;
+            var last_login = myObj[index].last_login;
+            var register_on = myObj[index].register_on;
+            var status = online == 1 ? '<span class="badge rounded-pill bg-primary">online</span>' :'<span class="badge rounded-pill bg-light text-dark">offline</span>';
+             UserProfileName.innerHTML += full_name.toUpperCase() +' '+status;
         }
 
     }
@@ -376,7 +380,7 @@ function getNewMessages(){
                 url: "api/get_new_message.php",
                 data:{conversation_id:conversation_id, last_message_id:last_message_id},
                 success: function(data){ 
-                    //console.log(data);
+                    console.log(data);
                     //console.log("lenght"+JSON.parse(data).length);
                     if(JSON.parse(data).length != undefined){
                     //userMessages.push(data);
@@ -414,28 +418,28 @@ function getNewMessages(){
 
 
 
-// $("#messenger-text").val($("#messenger-text").val() + 'temp_string'); 
+ $("#messenger-text").val($("#messenger-text").val() + 'temp_string'); 
 //Helpful for working with emojis
 
 
-navigator.geolocation.getCurrentPosition(function(location) {
-    console.log(location.coords.latitude);
-    console.log(location.coords.longitude);
-    console.log(location.coords.accuracy);
-  });
+// navigator.geolocation.getCurrentPosition(function(location) {
+//     console.log(location.coords.latitude);
+//     console.log(location.coords.longitude);
+//     console.log(location.coords.accuracy);
+//   });
 
-  getLocation();
-  function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        console.log("Geolocation is not supported by this browser.");
-    }
-}
-function showPosition(position) {
-    console.log("Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude); 
-}
+//   getLocation();
+//   function getLocation() {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(showPosition);
+//     } else {
+//         console.log("Geolocation is not supported by this browser.");
+//     }
+// }
+// function showPosition(position) {
+//     console.log("Latitude: " + position.coords.latitude + 
+//     "<br>Longitude: " + position.coords.longitude); 
+// }
 
 
 }); //End of on Ready

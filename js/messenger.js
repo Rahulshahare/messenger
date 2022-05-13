@@ -49,6 +49,7 @@ $( document ).ready(function() {
     function OnUserClick(id){
         console.log(id);
     }
+    
     /**
      * 
      * @param {id of div} id 
@@ -114,8 +115,8 @@ function showUsers(){
                                                 '</div>'+
                                                 '</div>'+
                                                 '<div class="col-9" style="padding: 10px;">'+
-                                                '<p style="margin: 0;">'+full_name+'</p>'+
-                                                '<span class="text-secondary" style="font-size: 14px;">'+secText+'</span>'+
+                                                '<p style="margin: 0;font-weight: 500;font-size: 15px;">'+full_name+'</p>'+
+                                                '<span class="text-secondary" style="font-size: 12px;font-weight: 500;">'+secText+'</span>'+
                                                 '</div></div></div></a>';
                                            
                                                
@@ -147,7 +148,7 @@ function GetAnatherUser(){
         ShowProfileOfUser();
         GetConversationId();
         //setTimeout(showUsers, 1000);   
-         //alert(this.id);
+        //alert(this.id);
         //showing msg pane i.e. #msgBox
         if( $("#msgBox").hasClass('d-none')){
             
@@ -364,14 +365,15 @@ function showMessages(){
                 Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
                 '<div id="'+id+'" class="msgText msgright" style="padding:10px;position: relative;border: 1px solid #e2e0e0";>'+
                                         '<div class="msg"><div class="preWrap">'+message+'</div></div>'+
-                                        '<div class="secondary-text">'+timeAgo+' </div>'+
+                                        '<div class="secondary-text mt-1">'+timeAgo+' </div>'+
+                                        '<div class="delete-msg text-danger fst-italic mt-1" id="'+id+'">delete </div>'+
                                     '</div>'+
                                 '</li>';
             }else{
                 Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
                 '<div id="'+id+'" class="msgText msgleft" style="max-width: 80%;padding: 10px;display: block;position: relative;border: 1px solid #cecece";>'+
                     '<div class="msg"><div class="preWrap">'+message+'</div></div>'+
-                        '<span class="secondary-text">'+timeAgo+' </span>'+
+                        '<span class="secondary-text mt-1">'+timeAgo+' </span>'+
                     '</div>'+
                 '</li>';
             }
@@ -452,44 +454,55 @@ function getNewMessages(){
 //     "<br>Longitude: " + position.coords.longitude); 
 // }
 
-// $("#send_image").on('change', (function(e){
-//     var form_data = new FormData(document.getElementById("send_image"));
-//     console.log(formData)
-// }))
 
-let imageUpload = document.getElementById("send_image");
+//Sending Multimedia Message
+
+var imageUpload = document.getElementById("send_image");
 // display file name if file has been selected
 imageUpload.onchange = function() {
-  let input = this.files[0];
+  var input = this.files[0];
   var formData = new FormData()
   formData.append('userImage', input)
-  if (input) {
-    console.log(input);
-    $.ajax({
-        type:"POST",
-        url: "upload.php",
-        data:formData,
-        processData: false,
-        contentType:false,
-        success: function(data){ 
-            console.log("Image::"+data);
-            //saveTODB
-            SendMessage(picture = "Image::"+data)
-        },
-        error: function(){
-            alert("There was an error.");
-        }
-    });
-    
-  } else {
-    //console.log("Please select a file");
-  }
+    if (input) {
+        console.log(input);
+        $.ajax({
+            type:"POST",
+            url: "upload.php",
+            data:formData,
+            processData: false,
+            contentType:false,
+            success: function(data){ 
+                console.log("Image::"+data);
+                //saveTODB
+                SendMessage(picture = "Image::"+data)
+            },
+            error: function(){
+                alert("There was an error.");
+            }
+        });
+        
+    } else {
+        //console.log("Please select a file");
+}
 };
 
-// 
+
+
+
+
+
+
+// FancyBox to show media 
 Fancybox.bind('[data-fancybox="gallery"]', {
     infinite: false
 });
+
+//Deleting Message
+
+
+
+
+
 
 
 }); //End of on Ready

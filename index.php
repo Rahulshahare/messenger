@@ -30,7 +30,7 @@
             <div class="row p25 justify-content-md-center">
                 <div  class="col-4" style="padding: 0;">
                     <div class="card" style="border-right: none;border-radius: 0px;">
-                        <div class="card-header text-center" style="font-weight: 500;background: none;padding: 1rem;">
+                        <div class="card-header text-center" style="font-weight:700;background: none;padding: 1rem;">
                             FRIENDS
                         </div>
                         <div class="card-body" style="max-height: 500px;overflow: auto;">
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div id="msgBox"  class="card d-none" style="border-radius: 0px;">
-                        <div class="card-header" id="User_two_details" style="font-weight: 500;background: none;padding: 1rem;">
+                        <div class="card-header" id="User_two_details" style="font-weight: 700;background: none;padding: 1rem;">
                             USERNAME
                         </div>
                         <div class="h500">

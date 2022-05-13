@@ -1,5 +1,5 @@
 body{
-    background-color: #efefef8f;
+    background-color: #3e3ef408;
 }
 .mybox-shadow{
     box-shadow: 0 1px 3px 0 hsl(0deg 0% 0% / 20%);
@@ -72,7 +72,8 @@ body{
 .secondary-text {
     --bs-text-opacity: 1;
     color: rgba(var(--bs-secondary-rgb),var(--bs-text-opacity))!important;
-    font-size: 10px;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .displayBlock{
@@ -85,4 +86,11 @@ body{
 
 .preWrap{
     white-space: pre-wrap;
+}
+
+.delete-msg{
+    font-size: 10px;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 500
 }

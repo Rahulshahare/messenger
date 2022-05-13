@@ -1,6 +1,3 @@
 # messenger
 
-previous-msg
-emoji
-image
-seen
+![image info](./images/intro.png)

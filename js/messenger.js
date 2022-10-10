@@ -60,9 +60,9 @@ $( document ).ready(function() {
            scrollTop: element.prop("scrollHeight")
         }, 500);
      }
-    /**
-     * function to get user details
-     */
+/**
+ * function to get user details
+ */
 function  getUserDetails(id){
         $.ajax({
             url: "api/get_user_details.php",
@@ -141,9 +141,12 @@ function showUsers(){
         
 }
 
-$('.deleteMsg').click(function(){
-    console.log("deleteClick")
-});
+function deleteMessage(){
+    $('.DeleteMsg').click(function(){
+        console.log("deleteMessage");
+    });
+}
+
     
 function GetAnatherUser(){
     $('.UserInList').click(function(){
@@ -369,7 +372,7 @@ function showMessages(){
                 '<div id="'+id+'" class="msgText msgright" style="padding:10px;position: relative;border: 1px solid #e2e0e0";>'+
                                         '<div class="msg"><div class="preWrap">'+message+'</div></div>'+
                                         '<div class="secondary-text mt-1" title=" '+timestamp+' ">'+timeAgo+' </div>'+
-                                        '<a class="deleteMsg delete-msg  text-danger fst-italic mt-1" id="'+id+'">delete </a>'+
+                                        '<a class="DeleteMsg delete-msg  text-danger fst-italic mt-1" id="'+id+'">delete </a>'+
                                     '</div>'+
                                 '</li>';
             }else{
@@ -385,6 +388,8 @@ function showMessages(){
     }else{
         console.log('ERROR IN SHOWING MESSAGE');
     }
+
+    deleteMessage();
 }
 
 function getNewMessages(){

@@ -74,6 +74,7 @@ body{
     color: rgba(var(--bs-secondary-rgb),var(--bs-text-opacity))!important;
     font-size: 12px;
     font-weight: 500;
+    cursor: default;
 }
 
 .displayBlock{

@@ -140,7 +140,10 @@ function showUsers(){
 
         
 }
-    
+
+$('.deleteMsg').click(function(){
+    console.log("deleteClick")
+});
     
 function GetAnatherUser(){
     $('.UserInList').click(function(){
@@ -365,15 +368,15 @@ function showMessages(){
                 Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
                 '<div id="'+id+'" class="msgText msgright" style="padding:10px;position: relative;border: 1px solid #e2e0e0";>'+
                                         '<div class="msg"><div class="preWrap">'+message+'</div></div>'+
-                                        '<div class="secondary-text mt-1">'+timeAgo+' </div>'+
-                                        '<div class="delete-msg text-danger fst-italic mt-1" id="'+id+'">delete </div>'+
+                                        '<div class="secondary-text mt-1" title=" '+timestamp+' ">'+timeAgo+' </div>'+
+                                        '<a class="deleteMsg delete-msg  text-danger fst-italic mt-1" id="'+id+'">delete </a>'+
                                     '</div>'+
                                 '</li>';
             }else{
                 Messagebox.innerHTML += '<li class="list-group-item msgbox">'+
                 '<div id="'+id+'" class="msgText msgleft" style="max-width: 80%;padding: 10px;display: block;position: relative;border: 1px solid #cecece";>'+
                     '<div class="msg"><div class="preWrap">'+message+'</div></div>'+
-                        '<span class="secondary-text mt-1">'+timeAgo+' </span>'+
+                        '<span class="secondary-text mt-1" title=" '+timestamp+' ">'+timeAgo+' </span>'+
                     '</div>'+
                 '</li>';
             }

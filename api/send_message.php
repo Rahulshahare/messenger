@@ -25,6 +25,8 @@ if(!empty($_POST['user_one']) && !empty($_POST['user_two']) && !empty($_POST['co
             if($id){
                 echo"send";
             }
+    
+    unset($dbh); //Unsetting database connection
 }else{
     echo"ERROR WHILE SAVING MESSAGE";
 }

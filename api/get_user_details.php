@@ -10,6 +10,8 @@ if(!empty($_GET['userId'])){
     if($row){
         print_r( json_encode($row));
     }
+    
+    unset($dbh); //Unsetting database connection
 }
 
 ?>

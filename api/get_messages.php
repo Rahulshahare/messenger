@@ -16,6 +16,8 @@ if(!empty($_POST['conversation_id'])){
             }else{
                 echo"{}";
             }
+            
+    unset($dbh); //Unsetting database connection
 }else{
     echo"ERROR IN GETTING MESSAGES";
 }

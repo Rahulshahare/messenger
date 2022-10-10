@@ -30,7 +30,8 @@ if(!empty($_POST['user_one']) && !empty($_POST['user_two'])){
                 $conversation_id = $dbh->lastInsertId();
                     echo $conversation_id;
             }
-
+    
+    unset($dbh); //Unsetting database connection
 
 }else{
     echo"ERROR";

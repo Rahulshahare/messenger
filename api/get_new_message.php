@@ -16,6 +16,7 @@ if(!empty($_POST['conversation_id']) && !empty($_POST['last_message_id'])){
             }else{
                 echo "{}";
             }
+    unset($dbh); //Unsetting database connection
 }else{
     echo"ERROR IS GETTING NEW MSG SERVER";
 }

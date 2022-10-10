@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    console.log( "ready!" );
+    console.log( "Lets Begin" );
     let userList = [];
     var userMessages = [];
     var userId = '';
@@ -143,7 +143,8 @@ function showUsers(){
 
 function deleteMessage(){
     $('.DeleteMsg').click(function(){
-        console.log("deleteMessage");
+        msg_id = this.id;
+        console.log(msg_id);
     });
 }
 

@@ -52,8 +52,8 @@
                                 </div>  
                                 <div style="background: #f6f6f6;padding: 40px 0px;">
                                     <h5 class="text-center" style="">Say Hello with <span style="color: #fff;background: #000000;padding: 6px;border-radius: 10px;font-weight: 900;">Text</span></h5>                                    
-                                    <h5 class="text-center mt-4" style="">Say Hello with 3000 emoji <span style="color: #fff;background: #000000;padding: 6px;border-radius: 10px;">😉</span></h5>       
-                                    <h5 class="text-center mt-4" style="">Say Hello by sending beautiful images <span><img src="images/image-photo.png" class="img-fluid" style="width: 7%;color: #fff;background: #000000;padding: 6px;margin-right: 10px;border-radius: 10px;"> </span></h5>
+                                    <h5 class="text-center mt-4" style="">Say Hello with 3000+ emoji <span style="color: #fff;background: #000000;padding: 6px;border-radius: 10px;">😉</span></h5>       
+                                    <h5 class="text-center mt-4" style="">Say Hello with beautiful images <span><img src="images/image-photo.png" class="img-fluid" style="width: 7%;color: #fff;background: #000000;padding: 6px;margin-right: 10px;border-radius: 10px;"> </span></h5>
                                 </div>
                             </div>
                         </div>

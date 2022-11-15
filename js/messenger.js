@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    console.log( "Lets Begin" );
+    console.log("Lets Begin");
     let userList = [];
     var userMessages = [];
     var userId = '';

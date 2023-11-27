@@ -37,7 +37,7 @@ $user_created = false;
             }else{
                 
                 //Creating new user
-                $img = substr($fullname, 0,1); //getting first latter of full name
+                $img = strtolower(substr($fullname, 0,1)); //getting first latter of full name & making it lowercase
                 $img = "letter-".$img.".png"; //creating image name
                 //echo $img;
                 $today = date("Y-m-d H:i:s"); 

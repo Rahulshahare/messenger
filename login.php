@@ -73,7 +73,7 @@
     </nav>
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col-md-4 mt-5 mybox-shadow p10_35  whiteBackground">
+            <div class="col-md-4 col-11 mx-auto mt-5 mybox-shadow p10_35  whiteBackground">
                 <h5 class="text-center mb-3 font_weight300">Sign In</h5>
                 <?php if($error != ''){?>
                     <div class="alert alert-danger" role="alert">

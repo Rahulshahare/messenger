@@ -15,7 +15,7 @@
                     <img src="usericons/<?php echo $_SESSION['profile_pic'] ?>" alt="mdo" width="32" height="32" class="rounded-circle">
                     <?php echo $_SESSION['LoggedInUser'] ?>
                 </a>
-                <ul class="dropdown-menu text-small mybox-shadow" aria-labelledby="dropdownUser1">
+                <ul class="dropdown-menu dropdown-menu-end text-small mybox-shadow" aria-labelledby="dropdownUser1">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="#">Settings</a></li>
                     <li><a class="dropdown-item" href="#">Notification</a></li>
@@ -28,7 +28,7 @@
     <div class="messegner">
         <div class="container">
             <div class="row p25 justify-content-md-center">
-                <div  class="col-4" style="padding: 0;">
+                <div  class="col-md-4 col-3" style="padding: 0;">
                     <div class="card" style="border-right: none;border-radius: 0px;">
                         <div class="card-header text-center" style="font-weight:700;background: none;padding: 1rem;">
                             FRIENDS
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <div  class="col-7" style="padding: 0;">
+                <div  class="col-md-7 col-9"" style="padding: 0;">
                     <div id="introBox"  class="card" style="border-radius: 0px;">
                         <div class="h500">
                             <div class="card-body"  style="max-height: 557px;min-height: 557px;overflow: auto;">    

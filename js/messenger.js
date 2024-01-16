@@ -106,15 +106,15 @@ function showUsers(){
                     UI_user_list.innerHTML += '<a href="#" id="'+id+'" data-id="'+id+'"  class="UserInList list-group-item list-group-item-action">'+
                                                 '<div class="container">'+
                                                 '<div class="row">'+
-                                                '<div class="col-3 position-relative text-center" style="padding: 0;">'+
+                                                '<div class="col-md-3 col-12 position-relative text-center" style="padding: 0;">'+
                                                 '<div>'+
-                                                '<img src="usericons/'+profile_pic+'" class="img-fluid " style="width: 80%;"/>'+
+                                                '<img src="usericons/'+profile_pic+'" title=" '+full_name+'" class="img-fluid " style="width: 80%;"/>'+
                                                 '<span class="position-absolute bottom-0  translate-middle p-2 bg-'+ badge +' border border-light rounded-circle" style="border: 3px solid #fff !important;">'+
                                                 '<span class="visually-hidden">New alerts</span>'+
                                                 '</span>'+
                                                 '</div>'+
                                                 '</div>'+
-                                                '<div class="col-9" style="padding: 10px;">'+
+                                                '<div class="col-9 d-none  d-md-block" style="padding: 10px;">'+
                                                 '<p style="margin: 0;font-weight: 500;font-size: 15px;">'+full_name+'</p>'+
                                                 '<span class="text-secondary" style="font-size: 12px;font-weight: 500;">'+secText+'</span>'+
                                                 '</div></div></div></a>';

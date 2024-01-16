@@ -15,9 +15,12 @@ body{
     padding: 0.4rem 1rem;
 }
 
-.p25{
-    padding: 25px;
-}
+
+@media (min-width: 576px) { 
+	.p25{
+    		padding: 25px;
+	}
+ }
 
 .whiteBackground{
     background-color: #fff;

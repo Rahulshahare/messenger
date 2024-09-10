@@ -470,6 +470,18 @@ var imageUpload = document.getElementById("send_image");
 // display file name if file has been selected
 imageUpload.onchange = function() {
   var input = this.files[0];
+  let type = input.type;
+  let allowedExtension = ['image/jpeg', 'image/jpg', 'image/png','image/gif'];
+
+  if(allowedExtension.indexOf(type)>-1){
+    //allowed
+  }else{
+    alert('Not a valid image');
+    return false
+  }
+
+  //console.log(input)
+  //console.log(input.type)
   var formData = new FormData()
   formData.append('userImage', input)
     if (input) {

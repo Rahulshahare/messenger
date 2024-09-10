@@ -72,12 +72,12 @@
                             <div class="msg-form" style="width: 100%;height: 100%;border-radius: 50px;border: 1px solid rgb(219 219 219);padding: 6px;">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-2 text-center" style="margin: auto;">
+                                        <div class="col-2 text-center d-none" style="margin: auto;">
                                             <a class="btn" style="display: table-row;" title="Select emoji">
                                                 <img src="images/1F600.svg" class="img-fluid" style="width: 50%;"/>
                                             </a>
                                         </div>
-                                        <div class="col-8" style="padding: 0;">
+                                        <div class="col-10" style="padding: 0;">
                                             <textarea class="form-control" id="messenger-text" style="height: 38px; border: none;" spellcheck="false" placeholder="Message.."></textarea>
                                         </div>
                                         <div id="Sendbutton" class="col-2 d-none">

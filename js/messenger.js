@@ -514,9 +514,9 @@ imageUpload.onchange = function() {
 
 
 // FancyBox to show media 
-Fancybox.bind('[data-fancybox="gallery"]', {
-    infinite: false
-});
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        infinite: false
+    });
 
 //Deleting Message
 
